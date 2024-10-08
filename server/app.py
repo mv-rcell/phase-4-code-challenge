@@ -3,6 +3,7 @@
 from flask import Flask, request, make_response
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
+from flask_sqlalchemy import SQLAlchemy
 from models import db, Hero, Power, HeroPower
 import os
 
