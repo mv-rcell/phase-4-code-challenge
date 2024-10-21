@@ -19,7 +19,8 @@ if __name__ == '__main__':
         ]
 
         db.session.add_all(powers)
-
+        db.session.commit()
+        
         print("Seeding heroes...")
         heroes = [
             Hero(name="Kamala Khan", super_name="Ms. Marvel"),
@@ -35,6 +36,7 @@ if __name__ == '__main__':
         ]
 
         db.session.add_all(heroes)
+        db.session.commit()
 
         print("Adding powers to heroes...")
         strengths = ["Strong", "Weak", "Average"]
@@ -42,7 +44,7 @@ if __name__ == '__main__':
         for hero in heroes:
             power = rc(powers)
             hero_powers.append(
-                HeroPower(hero=hero, power=power, strength=rc(strengths))
+                HeroPower(hero_id=hero.id, power_id=power.id, strength=rc(strengths))
             )
         db.session.add_all(hero_powers)
         db.session.commit()
